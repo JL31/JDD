@@ -13,7 +13,7 @@ __email__ = ''
 __version__ = '1.0'
 __maintainer__ = 'Julien LEPAIN'
 __date__ = '24/09/2019'
-__status__ = 'dev'
+__status__ = 'prod'
 
 # ==================================================================================================
 # IMPORTS
@@ -22,10 +22,12 @@ __status__ = 'dev'
 from PyQt5.QtWidgets import QMainWindow
 from PyQt5.QtCore import Qt
 from JDD.IHM.main_windows.ui_main import Ui_MainWindow
-from Sources.num_vers_nom import NumVersNom
-from Sources.nom_vers_num import NomVersNum
+from JDD.Sources.num_vers_nom import NumVersNom
+from JDD.Sources.nom_vers_num import NomVersNum
 from os.path import join
 from unidecode import unidecode
+import sys
+
 
 # ==================================================================================================
 # INITIALISATIONS
@@ -325,10 +327,19 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             Méthode qui permet de charger les numéros des départements et les noms associés à chaque numéro dans le dictionnaire "__dico_departements"
             La méthode va lire le contenu du fichier "numeros_et_noms_des_departements" situé dans le dossier "donnees"
         """
-        
+
         try:
 
-            with open(self.__emplacement_du_fichier_de_donnees, 'r', encoding="utf-8") as file:
+            emplacement_donnees_exe = sys._MEIPASS
+            emplacement_absolu_donnees_exe = join(emplacement_donnees_exe, self.__emplacement_du_fichier_de_donnees)
+
+        except AttributeError:
+
+            emplacement_absolu_donnees_exe = self.__emplacement_du_fichier_de_donnees
+
+        try:
+
+            with open(emplacement_absolu_donnees_exe, 'r', encoding="utf-8") as file:
 
                 donnees = file.readlines()
 

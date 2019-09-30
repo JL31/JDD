@@ -13,7 +13,7 @@ __email__ = 'julien.lepain@altran.com'
 __version__ = '1.0'
 __maintainer__ = 'Julien LEPAIN'
 __date__ = '25/09/2019'
-__status__ = 'dev'
+__status__ = 'prod'
 
 # ==================================================================================================
 # IMPORTS
