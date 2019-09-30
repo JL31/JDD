@@ -329,11 +329,13 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         """
 
         try:
+        # L'exécution du programme créé un dossier temporaire et son emplacement est enregistré dans la variable _MEIPASS
 
             emplacement_donnees_exe = sys._MEIPASS
             emplacement_absolu_donnees_exe = join(emplacement_donnees_exe, self.__emplacement_du_fichier_de_donnees)
 
         except AttributeError:
+        # Si le programme est lancé à partir du script main.py l'instruction précédente lève une exception 'AttributeError'
 
             emplacement_absolu_donnees_exe = self.__emplacement_du_fichier_de_donnees
 
